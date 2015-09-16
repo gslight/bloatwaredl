@@ -46,7 +46,7 @@ if /i %SCRIPT_VERSION% LSS %REPO_SCRIPT_VERSION% (
 		echo.
 		echo %TIME%   Downloading new version to the %Temp%, please wait...
 		echo.
-		wget.exe --no-check-certificate "%REPO_URL%/Tron v%REPO_SCRIPT_VERSION% (%REPO_SCRIPT_DATE%).bat" -O "%Temp%\bloatwaredl v%REPO_SCRIPT_VERSION% (%REPO_SCRIPT_DATE%).bat"
+		wget.exe --no-check-certificate "%REPO_URL%/bloatwaredl v%REPO_SCRIPT_VERSION% (%REPO_SCRIPT_DATE%).bat" -O "%Temp%\bloatwaredl v%REPO_SCRIPT_VERSION% (%REPO_SCRIPT_DATE%).bat"
 		echo.
 		echo %TIME%   Download finished.
 		echo.
