@@ -1,6 +1,6 @@
 %%%% HASHDEEP-1.0
 %%%% size,sha256,filename
 ## Invoked from: C:\Users\george.slight\Github\bloatwaredl
-## C:\Users\george.slight\Github\bloatwaredl> hashdeep.exe -s -e -c sha256 -l -r bloatwaredl v1.0.2 (2015-09-16).bat
+## C:\Users\george.slight\Github\bloatwaredl> hashdeep.exe -s -e -c sha256 -l -r bloatwaredl v1.0.3 (2015-09-16).bat
 ## 
-2615,21d6863ef0152cdd54b802810b9fd0dd8bf6232a91952472be1f92a705af298a,bloatwaredl v1.0.2 (2015-09-16).bat
+2606,b3172bee381dad66d7e18acd547dcb1f84d1f055f2d9099513bdfa7e7fbf3ca1,bloatwaredl v1.0.3 (2015-09-16).bat

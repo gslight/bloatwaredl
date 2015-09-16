@@ -1,11 +1,10 @@
 @echo
 for /f %%a in ('WMIC OS GET LocalDateTime ^| find "."') DO set DTS=%%a
 set CUR_DATE=%DTS:~0,4%-%DTS:~4,2%-%DTS:~6,2%
-## Test
 
 cls
 color 0f
-set SCRIPT_VERSION=1.0.2
+set SCRIPT_VERSION=1.0.3
 set SCRIPT_DATE=2015-09-16
 title bloatwaredl v%SCRIPT_VERSION% (%SCRIPT_DATE%)
 
