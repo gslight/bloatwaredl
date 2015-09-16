@@ -46,7 +46,8 @@ if /i %SCRIPT_VERSION% LSS %REPO_SCRIPT_VERSION% (
 		echo.
 		wget.exe --no-check-certificate "https://raw.githubusercontent.com/gslight/bloatwaredl/master/bloatwaredl%%20v%REPO_SCRIPT_VERSION%%%20(%REPO_SCRIPT_DATE%).bat" -O "bloatwaredl v%REPO_SCRIPT_VERSION% (%REPO_SCRIPT_DATE%).bat"
 		echo.
-		echo %TIME%   Download finished.
+		echo %TIME%   Download finished. 
+		ENDLOCAL DISABLEDELAYEDEXPANSION
 		echo.
 		:: Clean up after ourselves
 		del /f /q sha256sums.txt
