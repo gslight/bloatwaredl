@@ -13,11 +13,11 @@ set REPO_SCRIPT_VERSION=0
 
 :: PREP: Update check
 :: Use wget to fetch sha256sums.txt from the repo and parse through it. Extract latest version number and release date from last line (which is always the latest release)
-wget.exe --no-check-certificate https://raw.githubusercontent.com/gslight/bloatwaredl/master/sha256sums.txt -O %DIR%\sha256sums.txt 2>NUL
+wget.exe --no-check-certificate https://raw.githubusercontent.com/gslight/bloatwaredl/master/sha256sums.txt -O sha256sums.txt 2>NUL
 :: Assuming there was no error, go ahead and extract version number into REPO_SCRIPT_VERSION, and release date into REPO_SCRIPT_DATE
 if /i %ERRORLEVEL%==0 (
-	for /f "tokens=1,2,3 delims= " %%a in (%DIR%\sha256sums.txt) do set WORKING=%%b
-	for /f "tokens=4 delims=,()" %%a in (%DIR%\sha256sums.txt) do set WORKING2=%%a
+	for /f "tokens=1,2,3 delims= " %%a in (sha256sums.txt) do set WORKING=%%b
+	for /f "tokens=4 delims=,()" %%a in (sha256sums.txt) do set WORKING2=%%a
 	)
 if /i %ERRORLEVEL%==0 (
 	set REPO_SCRIPT_VERSION=%WORKING:~1,6%
@@ -49,7 +49,7 @@ if /i %SCRIPT_VERSION% LSS %REPO_SCRIPT_VERSION% (
 		echo %TIME%   Download finished.
 		echo.
 		:: Clean up after ourselves
-		del /f /q %DIR%\sha256sums.txt
+		del /f /q sha256sums.txt
 		pause
 		exit
 		)
