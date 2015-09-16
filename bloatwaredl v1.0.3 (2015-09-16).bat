@@ -42,9 +42,9 @@ if /i %SCRIPT_VERSION% LSS %REPO_SCRIPT_VERSION% (
 		color 8B
 		cls
 		echo.
-		echo %TIME%   Downloading new version to the %DIR%, please wait...
+		echo %TIME%   Downloading new version, please wait...
 		echo.
-		wget.exe --no-check-certificate "https://raw.githubusercontent.com/gslight/bloatwaredl/master/bloatwaredl%%20v%REPO_SCRIPT_VERSION%%%20(%REPO_SCRIPT_DATE%).bat" -O "%DIR%\bloatwaredl v%REPO_SCRIPT_VERSION% (%REPO_SCRIPT_DATE%).bat"
+		wget.exe --no-check-certificate "https://raw.githubusercontent.com/gslight/bloatwaredl/master/bloatwaredl%%20v%REPO_SCRIPT_VERSION%%%20(%REPO_SCRIPT_DATE%).bat" -O "bloatwaredl v%REPO_SCRIPT_VERSION% (%REPO_SCRIPT_DATE%).bat"
 		echo.
 		echo %TIME%   Download finished.
 		echo.
