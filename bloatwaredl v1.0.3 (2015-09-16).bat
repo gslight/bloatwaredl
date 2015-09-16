@@ -14,11 +14,11 @@ set REPO_SCRIPT_VERSION=0
 
 :: PREP: Update check
 :: Use wget to fetch sha256sums.txt from the repo and parse through it. Extract latest version number and release date from last line (which is always the latest release)
-wget.exe --no-check-certificate https://raw.githubusercontent.com/gslight/bloatwaredl/master/sha256sums.txt -O %TEMP%\sha256sums.txt 2>NUL
+wget.exe --no-check-certificate https://raw.githubusercontent.com/gslight/bloatwaredl/master/sha256sums.txt -O %DIR%\sha256sums.txt 2>NUL
 :: Assuming there was no error, go ahead and extract version number into REPO_SCRIPT_VERSION, and release date into REPO_SCRIPT_DATE
 if /i %ERRORLEVEL%==0 (
-	for /f "tokens=1,2,3 delims= " %%a in (%TEMP%\sha256sums.txt) do set WORKING=%%b
-	for /f "tokens=4 delims=,()" %%a in (%TEMP%\sha256sums.txt) do set WORKING2=%%a
+	for /f "tokens=1,2,3 delims= " %%a in (%DIR%\sha256sums.txt) do set WORKING=%%b
+	for /f "tokens=4 delims=,()" %%a in (%DIR%\sha256sums.txt) do set WORKING2=%%a
 	)
 if /i %ERRORLEVEL%==0 (
 	set REPO_SCRIPT_VERSION=%WORKING:~1,6%
@@ -43,15 +43,15 @@ if /i %SCRIPT_VERSION% LSS %REPO_SCRIPT_VERSION% (
 		color 8B
 		cls
 		echo.
-		echo %TIME%   Downloading new version to the %Temp%, please wait...
+		echo %TIME%   Downloading new version to the %DIR%, please wait...
 		echo.
-		wget.exe --no-check-certificate "https://raw.githubusercontent.com/gslight/bloatwaredl/master/bloatwaredl%%20v%REPO_SCRIPT_VERSION%%%20(%REPO_SCRIPT_DATE%).bat" -O "%Temp%\bloatwaredl v%REPO_SCRIPT_VERSION% (%REPO_SCRIPT_DATE%).bat"
+		wget.exe --no-check-certificate "https://raw.githubusercontent.com/gslight/bloatwaredl/master/bloatwaredl%%20v%REPO_SCRIPT_VERSION%%%20(%REPO_SCRIPT_DATE%).bat" -O "%DIR%\bloatwaredl v%REPO_SCRIPT_VERSION% (%REPO_SCRIPT_DATE%).bat"
 		echo.
 		echo %TIME%   Download finished.
 		echo.
 		echo %TIME%   Verifying SHA256 pack integrity, please wait...
 		echo.
-		hashdeep.exe -s -e -b -v -a -k %TEMP%\sha256sums.txt "%Temp%\bloatwaredl*.bat" | find /i "Files matched: 1"
+		hashdeep.exe -s -e -b -v -a -k %DIR%\sha256sums.txt "%DIR%\bloatwaredl*.bat" | find /i "Files matched: 1"
 		if !ERRORLEVEL!==0 (
 			echo %TIME%   SHA256 pack integrity verified. The new version is on your desktop.
 			echo.
@@ -65,7 +65,7 @@ if /i %SCRIPT_VERSION% LSS %REPO_SCRIPT_VERSION% (
 			echo.
 			pause
 			REM Clean up after ourselves
-			del /f /q %TEMP%\sha256sums.txt
+			del /f /q %DIR%\sha256sums.txt
 			exit
 		)
 	)
