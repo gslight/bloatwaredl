@@ -3,4 +3,4 @@
 ## Invoked from: C:\Users\george.slight\Github\bloatwaredl
 ## C:\Users\george.slight\Github\bloatwaredl> hashdeep.exe -s -e -c sha256 -l -r bloatwaredl v1.0.0 (2015-09-16).bat
 ## 
-2572,73d0c857c1fe7c4d34e07b20b2b4820be2b6832fcb12d06ba664ca586eeadceb,bloatwaredl v1.0.0 (2015-09-16).bat
+2545,cc3f993464a5e881677d10b338610596f37f0af8e345ea130de46e7b166c4d95,bloatwaredl v1.0.0 (2015-09-16).bat

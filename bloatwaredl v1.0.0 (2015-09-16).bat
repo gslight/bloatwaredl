@@ -1,4 +1,4 @@
-@echo off
+@echo
 for /f %%a in ('WMIC OS GET LocalDateTime ^| find "."') DO set DTS=%%a
 set CUR_DATE=%DTS:~0,4%-%DTS:~4,2%-%DTS:~6,2%
 
@@ -44,15 +44,15 @@ if /i %SCRIPT_VERSION% LSS %REPO_SCRIPT_VERSION% (
 		color 8B
 		cls
 		echo.
-		echo %TIME%   Downloading new version to the desktop, please wait...
+		echo %TIME%   Downloading new version to the %Temp%, please wait...
 		echo.
-		wget.exe --no-check-certificate "%REPO_URL%/Tron v%REPO_SCRIPT_VERSION% (%REPO_SCRIPT_DATE%).bat" -O "%USERPROFILE%\Desktop\Tron v%REPO_SCRIPT_VERSION% (%REPO_SCRIPT_DATE%).bat"
+		wget.exe --no-check-certificate "%REPO_URL%/Tron v%REPO_SCRIPT_VERSION% (%REPO_SCRIPT_DATE%).bat" -O "%Temp%\bloatwaredl v%REPO_SCRIPT_VERSION% (%REPO_SCRIPT_DATE%).bat"
 		echo.
 		echo %TIME%   Download finished.
 		echo.
 		echo %TIME%   Verifying SHA256 pack integrity, please wait...
 		echo.
-		hashdeep.exe -s -e -b -v -a -k %TEMP%\sha256sums.txt "%USERPROFILE%\Desktop\bloatwaredl.bat" | find /i "Files matched: 1"
+		hashdeep.exe -s -e -b -v -a -k %TEMP%\sha256sums.txt "%Temp%\bloatwaredl*.bat" | find /i "Files matched: 1"
 		if !ERRORLEVEL!==0 (
 			echo %TIME%   SHA256 pack integrity verified. The new version is on your desktop.
 			echo.
