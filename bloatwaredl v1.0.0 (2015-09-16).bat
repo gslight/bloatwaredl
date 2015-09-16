@@ -15,7 +15,7 @@ set REPO_SCRIPT_VERSION=0
 
 :: PREP: Update check
 :: Use wget to fetch sha256sums.txt from the repo and parse through it. Extract latest version number and release date from last line (which is always the latest release)
-wget.exe --no-check-certificate %REPO_URL%/sha256sums.txt -O %TEMP%\sha256sums.txt 2>NUL
+wget.exe --no-check-certificate https://raw.githubusercontent.com/gslight/bloatwaredl/master/sha256sums.txt -O %TEMP%\sha256sums.txt 2>NUL
 :: Assuming there was no error, go ahead and extract version number into REPO_SCRIPT_VERSION, and release date into REPO_SCRIPT_DATE
 if /i %ERRORLEVEL%==0 (
 	for /f "tokens=1,2,3 delims= " %%a in (%TEMP%\sha256sums.txt) do set WORKING=%%b
@@ -34,19 +34,10 @@ if /i %SCRIPT_VERSION% LSS %REPO_SCRIPT_VERSION% (
 	color 8a
 	cls
 	echo.
-	echo  ^^! A newer version of Tron is available on the official repo.
+	echo  ^^! A newer version of bloatwaredl is available on the official repo.
 	echo.
 	echo    Your version:   %SCRIPT_VERSION% ^(%SCRIPT_DATE%^)
 	echo    Latest version: %REPO_SCRIPT_VERSION% ^(%REPO_SCRIPT_DATE%^)
-	echo.
-	echo    Option 1: Sync directly from repo using BT Sync read-only key:
-	echo     %REPO_BTSYNC_KEY%
-	echo.
-	echo    Option 2: Download the latest self-extracting .exe yourself:
-	echo     %REPO_URL%
-	echo.
-	echo    Option 3: Automatically download latest .exe to the desktop
-	echo              ^(This copy of Tron will self-destruct afterwards^)
 	echo.
 	set /p CHOICE= Auto-download latest version now? [Y/n]:
 	if !CHOICE!==y (
@@ -55,7 +46,7 @@ if /i %SCRIPT_VERSION% LSS %REPO_SCRIPT_VERSION% (
 		echo.
 		echo %TIME%   Downloading new version to the desktop, please wait...
 		echo.
-		wget.exe --no-check-certificate "%REPO_URL%/Tron v%REPO_SCRIPT_VERSION% (%REPO_SCRIPT_DATE%).exe" -O "%USERPROFILE%\Desktop\Tron v%REPO_SCRIPT_VERSION% (%REPO_SCRIPT_DATE%).exe"
+		wget.exe --no-check-certificate "%REPO_URL%/Tron v%REPO_SCRIPT_VERSION% (%REPO_SCRIPT_DATE%).bat" -O "%USERPROFILE%\Desktop\Tron v%REPO_SCRIPT_VERSION% (%REPO_SCRIPT_DATE%).bat"
 		echo.
 		echo %TIME%   Download finished.
 		echo.
