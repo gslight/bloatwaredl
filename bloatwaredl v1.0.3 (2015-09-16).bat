@@ -8,7 +8,6 @@ set SCRIPT_VERSION=1.0.3
 set SCRIPT_DATE=2015-09-16
 title bloatwaredl v%SCRIPT_VERSION% (%SCRIPT_DATE%)
 
-set REPO_URL=
 set REPO_SCRIPT_DATE=0
 set REPO_SCRIPT_VERSION=0
 
@@ -49,24 +48,8 @@ if /i %SCRIPT_VERSION% LSS %REPO_SCRIPT_VERSION% (
 		echo.
 		echo %TIME%   Download finished.
 		echo.
-		echo %TIME%   Verifying SHA256 pack integrity, please wait...
-		echo.
-		hashdeep.exe -s -e -b -v -a -k %DIR%\sha256sums.txt "%DIR%\bloatwaredl*.bat" | find /i "Files matched: 1"
-		if !ERRORLEVEL!==0 (
-			echo %TIME%   SHA256 pack integrity verified. The new version is on your desktop.
-			echo.
-			popd
-			pause
-			echo. && ENDLOCAL DISABLEDELAYEDEXPANSION
-		) else (
-			color 0c
-			echo %TIME% ^^! ERROR: Download FAILED the integrity check. Recommend manually
-			echo                      downloading latest version.
-			echo.
-			pause
-			REM Clean up after ourselves
-			del /f /q %DIR%\sha256sums.txt
-			exit
+		pause
+		exit
 		)
 	)
 	color 0f
