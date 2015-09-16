@@ -5,8 +5,8 @@ set CUR_DATE=%DTS:~0,4%-%DTS:~4,2%-%DTS:~6,2%
 
 cls
 color 0f
-set SCRIPT_VERSION=1.0.0
-set SCRIPT_DATE=2015-09-15
+set SCRIPT_VERSION=1.0.1
+set SCRIPT_DATE=2015-09-16
 title bloatwaredl v%SCRIPT_VERSION% (%SCRIPT_DATE%)
 
 set REPO_URL=
