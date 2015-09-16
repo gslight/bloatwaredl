@@ -48,6 +48,8 @@ if /i %SCRIPT_VERSION% LSS %REPO_SCRIPT_VERSION% (
 		echo.
 		echo %TIME%   Download finished.
 		echo.
+		:: Clean up after ourselves
+		del /f /q %DIR%\sha256sums.txt
 		pause
 		exit
 		)
